@@ -1,0 +1,5 @@
+package com.nitish;
+
+public enum Fruits {
+   SUNDAY,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY;
+}

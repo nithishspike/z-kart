@@ -1,0 +1,43 @@
+package com.nitish;
+
+class Demo{
+	public int a, b;
+	Demo(){}
+	Demo(int a, int b){
+		this.a = a;
+		this.b = b;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "a = " + a + ", b = " + b;
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return new Demo(this.a, this.b);
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		
+		Demo a = new Demo(10, 11);
+		Demo b = (Demo) a.clone();
+		
+		System.out.println(a);
+		System.out.println(b);
+		
+		a.a = 1000;
+		a.b = 1223;
+		
+		System.out.println(a);
+		System.out.println(b);
+        
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.nitish;
+
+public enum Fruits {
+   SUNDAY(10),
+   MONDAY(20),
+   TUESDAY(30),
+   WEDNESDAY(40),
+   THURSDAY(50),
+   FRIDAY(60),
+   SATURDAY(70);
+   final int a;
+   Fruits(int a)
+   {
+	   this.a=a;
+	   System.out.println(a);
+   }
+}

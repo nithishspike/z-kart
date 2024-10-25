@@ -1,0 +1,11 @@
+package com.nitish;
+
+import spike.*;
+
+public class New {
+   public static void main(String[] args)
+   {
+	   Main obj=new Main();
+	   System.out.println(obj.a);
+   }
+}

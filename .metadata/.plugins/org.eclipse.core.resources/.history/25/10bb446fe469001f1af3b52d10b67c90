@@ -1,0 +1,14 @@
+package com.nitish;
+
+
+public class New {
+   public static void main(String[] args)
+   {
+//	   Main obj=new Main();
+       Fruits obj=Fruits.FRIDAY;
+       if(obj==Fruits.THURSDAY)
+    	   System.out.print(Fruits.THURSDAY);
+       //Fruits.MONDAY.a=30;
+       System.out.print(Fruits.MONDAY.a);
+   }
+}
