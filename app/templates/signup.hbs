@@ -1,0 +1,40 @@
+<div class="auth-workflow">
+ <div class="auth-container">
+  {{#link-to "index" classNames="auth-navbar "}} 
+    <div class="content-center">
+       <img class="icon-md" src="/client/z-kartLogo.png" alt="z-kart">
+    </div>
+  {{/link-to}}
+  <div class="auth-mainportal">
+    <h1 class="auth-head">Create your Z-kart Account</h1>
+    <p class="error-message ">{{error}}</p>
+    <form {{action "submitSignup" on="submit"}}>
+        <div class="input-group-row">
+          {{input-field inputId="first_name"  value=first_name placeholder="First Name"  error=firstNameError inputClass="auth-input"}}
+          
+            {{input-field inputId="last_name"  value=last_name placeholder="Last Name"  error=lastNameError inputClass="auth-input"}}
+        </div>
+        {{input-field inputId="address"  value=address placeholder="Address"  error=addressError tag="text-area" inputClass="auth-input"}}
+        <div class="input-group-row">
+            {{input-field inputId="email"  value=email placeholder="Email"  error=emailError inputType="email" inputClass="auth-input"}}
+            {{input-field inputId="mobile" inputType="number" value=mobile placeholder="Mobile"  error=mobileError inputClass="auth-input"}}
+        </div>
+        <div class="input-group-row">
+            {{input-field inputId="password" value=password placeholder="Password" error=passwordError inputType="password"}}
+            {{input-field inputId="confirm_password" value=confirm_password placeholder="Confirm Password" error=confirmPasswordError inputType="password"}}
+        </div>
+        <div class="input-group-row">
+            <button type="submit" class="button-inner" {{action "cancel"}}>
+                <span class="content-center">Cancel</span>
+            </button>
+            <button type="submit" class="button-inner">
+                <span class="content-center">Continue</span>
+            </button>
+        </div>
+    </form>
+  </div>
+    <div class="divider-break content-center font-md">
+        Already have an account? {{#link-to "login" }}<span class="auth-text">Login</span>{{/link-to}}
+    </div>
+ </div>
+</div>

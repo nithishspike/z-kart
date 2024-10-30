@@ -1,0 +1,19 @@
+<div class="confirmation-container">
+    <div class="confirmation-box">
+        <div class="icon-container">
+            <img class="icon-big" src="/client/check.png" alt="check_img">
+        </div>
+        <h2>Order Confirmed!</h2>
+        <p class="font-ml">Your order is confirmed and we will deliver it to your shipping address shortly.</p>
+        {{#if this.coupon}}
+            <p class="font-md"><strong>Congratulations!</strong> You have successfully claimed the discount coupon code <span class="coupon-code">{{this.coupon}}</span>. Please note that this code will expire after your next 3 orders.</p>
+        {{/if}}
+        {{#link-to "index" class="button-inner"}}
+            Continue Shopping
+        {{/link-to}}
+        {{!-- <span class="button-inner">Continue Shopping</span> --}}
+    </div>
+</div>
+
+
+{{outlet}}

@@ -1,0 +1,13 @@
+{{#if showOverlay}}
+  <div class="model-box">
+      <div class="close" {{action "handleCloseClick"}}><span>&times;</span></div>
+      <div class="message">{{message}}</div>
+      <div class="model-btn">
+          <div class="button-inner" {{action "handleNoClick"}}>No</div>
+          <div class="button-inner" {{action "handleYesClick"}}>Yes</div>
+      </div>
+  </div>
+  <span class="overlay show"></span>
+{{/if}}
+
+{{yield}}

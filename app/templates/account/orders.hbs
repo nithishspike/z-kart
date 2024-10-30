@@ -1,0 +1,77 @@
+{{#if isAdmin}}
+    {{!-- {{top-menu}} --}}
+    <div class="flex-row input-grp">
+        {{input type="text" name="email" class="auth-input" placeholder="Enter User or Invoice Number." value=searchValue }}
+        <button {{action "fetchOrdersHistory"}} class="button-inner">Enter</button>
+    </div>
+{{/if}}
+
+<div class="order-container flex-column">
+    <div class="order-details">
+        {{#if (or (eq model.length 0) (eq model.length undefined))}}
+            {{#if isAdmin }}
+                <span class="order-title">{{adminMsg}}</span>
+            {{else}}
+                <span class="order-title">{{userMsg}}</span>
+            {{/if}}
+        {{else}}
+            {{#if isAdmin }}
+                <span class="order-title">Orders </span>
+            {{else}}
+                <span class="order-title">Your Orders</span>
+            {{/if}}
+            <div class="order-box">
+                    {{#each model as |order| }}
+                    <div class="order-items">
+                        <div class=" order-head flex-row">
+                            <div class=" order-head-items">
+                                <div class="font-lt"> Order Date:</div>
+                                <strong >{{time-converter order.transactionTime}}</strong>
+                            </div>
+                            {{#if isAdmin }}
+                                <div class="order-head-items">
+                                    <div class="font-lt">Customer:</div>
+                                    <strong>{{order.name}}</strong>
+                                </div>
+                            {{/if}}
+                            {{#if order.discountCode}}
+                                <div class="order-head-items">
+                                    <div class="font-lt">Discount Code:</div>
+                                    <strong>{{order.discountCode}}</strong>
+                                </div>
+                                <div class="order-head-items">
+                                    <div class="font-lt">Percentage:</div>
+                                    <strong>{{order.percentage}}% </strong>
+                                </div>
+                            {{/if}}
+                            
+                            <div class="order-head-items">
+                                <div class="font-lt">Total Amount:</div>
+                                <strong >₹{{order.totalAmount}}</strong>
+                            </div>
+                        </div>
+                        {{#each order.invoice_items as |product| }}
+                            {{#link-to "product" product.productId class="order-item"}}
+                                <img class="item-img" src={{product-url product.productName}} alt="img"/>
+                                <div class="item-box">
+                                    <div class="item-content">
+                                        <span class="font-md">{{product.productName}}</span>
+                                        <strong class="price">₹{{product.price}}</strong>
+                                    </div>
+                                    <span class="font-lt">Quantity:<span class="text-dark">{{product.quantity}}</span></span>
+                                </div>
+                            {{/link-to}}
+                        {{/each}}
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
+    </div>
+    <div class="pagination">
+        <div class=" icon" class="{{if (eq currentPage 0) 'hide'}}" {{action "decrementPage"}}>&laquo;</div>
+        <div class="pg-no {{if (eq model.length undefined) 'hide' 'show' }}">{{currentPage}}</div>
+        <div class=" icon" class="{{if (or  (or (eq model.length 0) (eq model.length undefined))  disableNextPage) 'hide' 'show'}}" {{action "incrementPage"}}>&raquo;</div>
+    </div>
+</div>
+
+{{outlet}}

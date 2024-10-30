@@ -1,0 +1,11 @@
+{{#if (eq currentRouteName "checkout.index")}}
+    <div class="order-container flex-row">
+        {{user-details model=model.UserDetails address=model.UserDetails.address
+            paymentMode=model.UserDetails.PaymentMode  readOnly=true class="user-details"}}
+        
+        {{cart-container cartItems=model.cartItems address=model.UserDetails.address paymentMode=model.UserDetails.PaymentMode  
+                Discounts=model.Discounts class="order-items" isOrderpage=true}}
+    </div>
+{{else}}
+    {{outlet}}
+{{/if}}

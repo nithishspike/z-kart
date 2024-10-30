@@ -1,0 +1,113 @@
+{{shop-navbar}}
+{{!-- {{#each model as |product| }} --}}
+<ul class="breadcrumb">
+  <li>{{#link-to "index"}}Home{{/link-to}}</li>
+  <li>{{#link-to "products" (query-params filter_category=category.categoryId filter_brand=null )}}{{category.displayName}}{{/link-to}}</li>
+  <li>{{#link-to "products" (query-params filter_brand=brand.brandId filter_category=null)}}{{brand.brandName}}{{/link-to}}</li>
+  <li>{{model.product.productName}}</li>
+</ul>
+
+<div class="product-wrapper">
+    <div class="img-box">
+        {{!-- {{#link-to "product" model.product.productId}} --}}
+                <img src={{product-url model.product.productName}} alt="{{model.product.productName}}" class="product-img "/>
+        {{!-- {{/link-to}} --}}
+    </div>
+    <div class="product-items">
+        <div class="product-box">
+            {{!-- {{#link-to "product" product.productId}} --}}
+            <div class="font-xl">{{model.product.productName}}</div>
+            {{!-- {{/link-to}} --}}
+            {{#if (eq dealOfTheMoment.productId model.product.productId)}}
+                  <div class="product-discounts">
+                      <span >
+                        {{dealOfTheMoment.percentage}}% off 
+                      </span>
+                      <div class="discounts">
+                        Deal of the Moment
+                      </div>
+                  </div>
+                  <div class="item-discounts">
+                        <span class="font-md">₹{{calculate-discount-price model.product.productPrice dealOfTheMoment.percentage}}</span>
+                        <div class="item-price">₹{{model.product.productPrice}}</div>
+                  </div>
+            {{else}}
+                 <div class="text-large" > ₹ {{model.product.productPrice}}</div>
+            {{/if}}
+        </div>
+        <hr >
+        <table class="line-height-low">
+            <tbody>
+                {{#each (split-lines model.product.specification) as |line index|}}
+                <tr>
+                    <td>
+                        {{#if (eq index 0)}}
+                            <span class="text-dark"> Specification </span>
+                        {{/if}}
+                    </td>
+                    <td>
+                        <span>{{line}}</span>
+                    </td>
+                </tr>
+                {{/each}}
+                <tr>
+                    <td>
+                        <span class="text-dark">Category</span>
+                    </td>
+                    <td>
+                        <span class="text grey">{{category.displayName}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="text-dark"> </span>
+                    </td>
+                    <td>
+                        <span class="text grey">{{category.categoryDescription}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="text-dark">Brand</span>
+                    </td>
+                    <td>
+                        <span class="text grey">{{brand.brandName}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="text-dark"> </span>
+                    </td>
+                    <td>
+                        <span class="text grey">{{brand.brandDescription}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div class="a-dropdown">
+                <span class="a-dropdown-label" >Quantity:</span>
+                <select class="a-dropdown-select" value={{selectedQuantity}} onchange={{action "updateQuantity"}}>
+{{!-- Loop over the quantity and generate options --}}
+                    {{#each (range 1 model.product.stock) as |i|}}
+                        <option value={{i}}>{{i}}</option>
+                    {{/each}}
+                </select>
+        </div>
+        {{#unless isAdmin }}
+            {{#if (eq model.product.stock 0)}}
+                <div class="out-of-stock">
+                    <span class="not-icon">&#10069;</span><span>This item is currently out of stock</span>
+                </div>
+            {{else}}
+                <div class="input-group-row">
+                    <button type="button" class="button-inner product-btn" onclick={{action "AddItem" false}}><img class="icon-small" src="/client/white-cart.png" alt="cart"/><span> Add to Cart</span></button>
+                    <button type="button" class="button-inner" onclick={{action "AddItem" true}}>Buy now</button>
+                </div>
+            {{/if}}
+        {{/unless}}
+    </div>
+    
+</div>
+{{product-container products=model.similarProducts scroll="horizontal-scroll" title="Similar Products"}}
+{{outlet}}

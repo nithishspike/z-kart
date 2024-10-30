@@ -1,0 +1,98 @@
+.profile-items
+{   
+    .update-container{
+        width:50%;
+        .update-head{
+            margin-left: 30px;
+            font-size: $font-size-xxl;
+        }
+    }
+    .profile-icon{
+        width: $width-md;
+        padding-left: 15rem;
+    }
+    .button-inner {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .Heading{
+        margin:10px;
+    }
+    @include flex-space(last baseline,center,column);
+    // gap:25px;
+    padding:0px 50px;
+    padding-top:15px;
+    height:100vh;
+    background-color: white;
+    .auth-box{
+        @include flex-space(left,null,column);
+        .auth-input{
+            width:300px;
+            height:30px;
+            @include input-style();
+            border: 1px solid #bfbfbfa6;
+            margin-top:20px;
+        }
+        .input-group-row 
+        {
+            .verify-btn{
+                margin-top: 36px;
+                height: 49%;
+            }
+            .isvalid:after{
+                content: '✓';
+                color: green;
+            }
+            .notvalid:after {
+                content: '×';
+                color: red;
+                // margin-left: 5px;
+              }
+            .auth-status{
+                margin-top: 30px;
+                margin-left: 10px;
+                font-size:30px;
+            }
+
+        } 
+        .error-message{
+            width: 20rem;
+        }
+        .eye-icon{
+            // margin-top:30px;
+            height:25px;
+            margin-left: 10px
+        }
+    }
+
+    &.update-fields{
+        align-items: center;
+        width:80%;
+    }
+
+    .profile-btn{
+        width:100%;
+    }
+    #edit-btn{
+        align-self: flex-end;
+        width: 6rem;
+        margin-right: 10px;
+        font-size: $font-size-md;
+        img{
+            width: 20px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    }
+}
+.input-fields{
+    @extend .flex-row;
+    position:relative;
+    .auth-icon{
+        position:absolute;
+        right:20px;
+        bottom:8px;
+
+    }
+}

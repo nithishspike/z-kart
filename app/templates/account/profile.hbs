@@ -1,0 +1,8 @@
+
+<div class="profile-items">
+  {{#if (eq currentRouteName "account.profile.index")}}
+      {{user-details address=this.model.address model=this.model readOnly=false isVerified=false}}
+  {{else}}
+      {{outlet}}
+  {{/if}}
+</div>

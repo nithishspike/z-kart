@@ -1,0 +1,73 @@
+$light-grey:rgb(153, 150, 150);
+$light-blue:#b3d7ff;
+$sm-grey:#aaa2a230;
+$red:rgb(204, 12, 57);
+$light-green:#23be25;
+$border-color:#6060600a;
+$bg-blue:#b3d7ff;
+$text-blue:#2874f0;
+$btn-blue:#007bff;
+
+//font-family
+$font-family-sans: 'Helvetica Neue', Arial, sans-serif;
+$font-family-serif: 'Georgia', serif;
+$font-family-mono: 'Courier New', monospace;
+
+//font-size
+$font-size-xs: 12px;    // Extra small
+$font-size-sm: 14px;    // Small
+$font-size-md: 16px;    // Medium
+$font-size-lg: 18px;    // Large
+$font-size-xl: 20px;    // Extra large
+$font-size-xxl: 30px; 
+//font-weight
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-black: 900;
+
+$width-xs: 50px;       // Extra small width
+$width-sm: 100px;      // Small width
+$width-md: 150px;      // Medium width
+$width-lg: 200px;      // Large width
+$width-xl: 300px;      // Extra large width
+$width-full: 100%;     // Full width
+
+// Heights
+$height-xs: 20px;      // Extra small height
+$height-sm: 30px;      // Small height
+$height-md: 40px;      // Medium height
+$height-lg: 50px;      // Large height
+$height-xl: 60px;      // Extra large height
+$height-auto: auto; 
+
+
+
+@mixin flex-space($param1: auto, $param2: auto, $param3: auto) {
+    display: flex;
+    align-items: $param1;
+    justify-content: $param2;
+    flex-direction: $param3;
+  }
+
+  @mixin scale-effect{
+    cursor: pointer;
+    transition:scale 0.2 ease;
+    &:hover
+      {
+        scale:1.02;
+      }
+    &:active
+      {
+        scale:1;
+      }
+  }
+
+@mixin input-style{
+    padding: 5px;
+    border:none;
+    -moz-appearance: textfield;
+    border-radius: 4px;
+    resize: none;
+}

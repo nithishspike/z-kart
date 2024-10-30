@@ -1,0 +1,28 @@
+.order-container{
+    margin: 20px;
+    @include flex-space(null,center);
+    .user-details{
+        background-color: white;
+        border: 10px solid #8080800d;
+        display: flex;
+        align-items: center;
+        height:100vh;
+        .profile-items{
+            max-width: 800px;
+            justify-content: center;
+        }
+    }
+
+    .order-items{
+        .cart-container{
+            border: 10px solid #8080800d;
+            transform:none;
+            position:static;
+            width:22rem;
+            box-shadow:none;
+        }  
+    }
+     
+   
+    
+}

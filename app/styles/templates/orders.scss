@@ -1,0 +1,109 @@
+.order-container{
+    width:100%;
+    background-color: white;
+    
+    // .tabpane{
+    //     display:flex;
+    //     list-style: none;
+    //     gap:10px;
+    //     color:black;
+    //     @extend .font-md;
+    // }
+
+    .order-details{
+        margin:4rem;
+        .order-title{
+            @extend .font-xl;
+            margin:80
+        }
+        .order-box{
+            // width:100%;
+            .order-items{
+                border: 2px solid $border-color;
+                border-radius: 1rem;
+                padding:2rem;
+                margin: 1rem 0;
+                &:hover{
+                    box-shadow:0px 8px 16px 8px rgba(0,0,0,0.2);
+                }
+                .order-head{
+                    padding-bottom: 1rem;
+                    justify-content: space-between;
+                    .order-head-items{
+                        @include flex-space(null,null,column);
+                        padding: 0.2rem 0;
+                        gap: 10px;
+                        .order-head-item{
+                            @extend .font-lt;
+                        }
+                    }
+                }
+                .order-item{
+                    // justify-content: space-between;
+                    // width: 40rem;
+                    padding: 1.4rem 0;
+                    @extend .flex-row ;
+                    border-top:1px solid $light-grey;
+                    .item-img{
+                        width:5rem;
+                        height:5rem;
+                        margin-right: 2rem;
+                        object-fit: contain;
+                    }
+                    .item-box{
+                        width:100%;
+                        @include flex-space(null,space-evenly,column);
+                        .item-content{
+                            @include flex-space(null,space-between,row);
+                            // .price{
+                            //     color:black;
+                            // }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+    .pagination{
+        @include flex-space(center,center,row);
+        margin:2rem;
+        font-size:$font-size-xl;
+        gap:10px;
+        .pg-no{
+            color:$text-blue;
+        }
+        .icon{
+            @include scale-effect();
+        }
+    }
+    // .pagination-wrapper{
+    //     width:100%;
+    //     @include flex-space(null,space-between,row);
+    //     .pagination{
+    //         // background-color: grey;
+    //         padding: 10px;
+    //         border: 1px solid grey;
+    //         border-radius: 10px;
+    //         display: flex;
+    //         align-items: center;
+    //         background-color:$btn-blue;
+    //         border-radius: 10px;
+    //         gap: 10px;
+    //         color:white;
+    //         cursor: pointer;
+    //         margin-right: 60px;
+    //         margin-bottom: 20px;
+    //         margin-left: 60px;
+    //         @include scale-effect();
+    //         .icon{
+    //             font-size:$font-size-xl;
+    //         }
+    //     }
+    // }
+}
+
+strong.price {
+    color: #625b5b;
+}
+

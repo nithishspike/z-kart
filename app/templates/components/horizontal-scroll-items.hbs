@@ -1,0 +1,14 @@
+<div>
+  <div class="wrapper">
+    {{#each products as |product|}}
+      <div class="item">
+        {{product.productId}}<br/>
+        {{product.productName}}<br/>
+        ₹{{product.productPrice}}<br/>
+      </div>
+      <br/>
+    {{/each}}
+  </div>
+</div>
+{{yield}}
+

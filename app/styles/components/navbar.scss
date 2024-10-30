@@ -1,0 +1,199 @@
+
+@import url("../util/custom-styling.scss");
+@import "../util/variables";
+
+.navbar {
+    position:relative;
+    background-color: white;
+    // font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    margin:0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .navbar-logo h1 {
+        font-size: 24px;
+        // color: #ffcc00;
+        margin: 0;
+      }
+  
+      .navbar-content{
+        @include flex-space(center,center,row);
+      }
+      
+      .navbar-search {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      
+        .input-search {
+          width: 35vw;
+          height: 45px;
+          box-sizing: border-box;
+          border: 2px solid $light-grey;
+          border-radius: 20px;
+          font-size: 16px;
+          background-color: white;
+          background-image: url("/client/search-icon.png");
+          background-size: 25px;
+          background-position: 10px 10px;
+          background-repeat: no-repeat;
+          padding: 12px 20px 12px 40px;
+          z-index: 10;  
+        }
+      
+        .search-suggestions {
+          position: absolute;
+          width: 100%;
+          top: 100%;  // Directly below the input field
+          left: 0;
+          // margin-top: -1px;  // Slight negative margin to overlap borders
+          color: #080808;
+          border: 2px solid $light-grey;  // Match the border of the input field
+          background-color: white;
+          border-radius: 0 0 4px 4px;  // Rounded only at the bottom to connect smoothly with the input
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          overflow: hidden;  // Prevents overflow issues
+          border-top:none;
+          .search-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            color:black;
+            &:hover {
+              background-color: #f0f0f0;
+            }
+      
+            .selectedProduct{
+              background-color: #f0f0f0;
+          }
+            
+            .search-img img {
+              width: 45px;
+              height: 50px;
+              border-radius: 4px;
+              object-fit: contain;
+            }
+      
+            .search-product {
+              margin-left: 10px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              max-width: 220px;
+            }
+          }
+        }
+      
+      
+      
+        button {
+          padding: 8px 12px;
+          font-size: 20px;
+          background-color: #ffcc00;
+          border: none;
+          border-radius: 0 5px 5px 0;
+          cursor: pointer;
+          color: #333;
+  
+          &:hover {
+            background-color: #e6b800;
+          }
+        }
+      }
+      .navbar-right{
+        display:inline-flex;
+        align-items: center;
+        gap:1rem;
+      }
+  
+      .navbar-cart {
+        position: relative;
+        img{
+          width:25px;
+          @include scale-effect();
+        }
+        a {
+          color: rgb(9, 9, 9);
+          text-decoration: none;
+          font-size: 20px;
+          position: relative;
+  
+          .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50%;
+          }
+        }
+      }
+  
+     
+  
+        .navbar-signup {
+          padding: 8px 16px;
+          background-color: #ffcc00;
+          border-radius: 4px;
+          color: #080808;
+          text-decoration: none;
+  
+          &:hover {
+            background-color: #e6b800;
+          }
+        }
+      
+    }
+  }
+  
+  .dropbtn {
+    background-color: white;
+    color: rgb(3, 3, 3);
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content span {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content span:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color:#dad9d55c;
+  }
+

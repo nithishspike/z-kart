@@ -1,0 +1,35 @@
+<div class="auth-workflow">
+ <div class="auth-container">
+  {{#link-to "index" classNames="auth-navbar "}} 
+    <div class="content-center">
+       <img class="icon-md" src="/client/z-kartLogo.png" alt="z-kart">
+    </div>
+  {{/link-to}}
+  <div class="auth-mainportal">
+    <h1 class="auth-head">Login</h1>
+    <p class="error-message content-center">{{error}}</p>
+    <form {{action "submitEmail" on="submit"}}>
+        {{input-field inputId="email" value=email placeholder="Email" error=emailError inputClass="auth-input"}}
+        {{#if show_password}}
+          {{input-field inputId="password" value=password placeholder="Enter your password" error=passwordError inputType="password"}}
+        {{/if}}
+      <div class="button-box">
+        <button type="submit" class="button-inner">
+          <span class="content-center">Login</span>
+        </button>
+      </div>
+      
+    </form>
+  </div>
+  <div class="divider-break content-center">New to Z-kart</div>
+    <div class=" content-center" type="submit">
+        {{#link-to "signup" }}
+            <span  class="content-conter auth-text">
+                Create your z-kart Account
+            </span>
+        {{/link-to}}
+    </div>
+ </div>
+</div>
+
+{{outlet}}

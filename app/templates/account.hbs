@@ -1,0 +1,25 @@
+ {{ model-dialog
+  message="Are you sure you want to logout?" 
+  yesAction=(action "logout")
+  showOverlay=this.showOverlay }}
+<div class="account">
+    <div class="account-sidebar flex-column">
+       {{#link-to "account.profile.index" classNames="sidebar-item" activeClass="box-visited"}}<img src="/client/edit.png" alt="edit page" class="icon-small"/>profile{{/link-to}}
+       {{#if isAdmin}}
+            {{#link-to "account.orders" class=(join-string "sidebar-item  " (if isCurrentRoute "box-visited" ))  }}<img src="/client/user-gear.png" alt="shopping bag" class="icon-small" />Admin Panel{{/link-to}}
+        {{else}}
+            {{#link-to "account.orders" classNames="sidebar-item" activeClass="box-visited"}}<img src="/client/shopping-bag.png" alt="shopping bag" class="icon-small" />Orders{{/link-to}}
+        {{/if}}
+       {{#link-to "account.profile.update-password" classNames="sidebar-item" activeClass="box-visited"}}<img src="/client/padlock.png" alt="padlock" class="icon-small" />Update Password{{/link-to}}
+       <div class="sidebar-item" {{action "showModel" }}><img src="/client/logout.png" alt="padlock" class="icon-small" />Log out</div>
+    </div>
+     <div class="profile">
+        {{#if isAdmin}}
+            {{#if isCurrentRoute}}
+              {{top-menu}}
+            {{/if}}
+        {{/if}}
+        {{outlet}}
+    </div>
+</div>
+

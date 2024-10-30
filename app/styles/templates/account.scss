@@ -1,0 +1,38 @@
+.account
+{
+    @include flex-space("space-around","center","row");
+    border:15px solid $border-color;
+    margin: 0px 10%;
+    background-color: white;
+    .account-sidebar{
+        //  background:$light-grey;
+        //  flex:0.6;
+         border:10px solid $border-color;
+         min-width: 15rem;
+         cursor: pointer;
+         .sidebar-item{
+            display: flex;
+            align-items: center;
+            padding: 20px 30px;
+            text-align: center;
+            color:black;
+            &:hover{
+                color: #1268c4;
+            }
+            img{
+                width:20px;
+            }
+         }
+    }
+    .profile{
+        //  background-color: $ligh-grey;
+        border:10px solid $border-color;
+        background-color: white;
+        width:100%;
+        height:100vh;
+    }
+}
+.box-visited{
+    color:$text-blue;
+    background-color:$bg-blue;
+}

@@ -1,0 +1,55 @@
+.overlay{
+    position:fixed;
+    height:100%;
+    width:100%;
+    background-color: rgba(0,0,0,0.1);
+    opacity:1;
+    pointer-events: auto;
+}
+
+.model-box{
+    @include flex-space(center,center,column);
+    opacity: 1;
+    pointer-events: auto;
+    width: 33rem;
+    height: 17rem;
+    background-color: white;
+    position: fixed;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    gap: 51px;
+    border-radius:12px;
+    transform: translate(-50%, -50%);
+    .close {
+        position: absolute;
+        top: 3px;
+        right: 10px;
+        cursor: pointer;
+        font-size: $font-size-xl;
+        color: #333;
+        @include scale-effect();
+    }
+    .message{
+        color:#605959;
+        font-size:$font-size-xl;
+        font-weight:$font-weight-light;
+    }
+    .model-btn{
+        gap:8rem;
+        width: 284px;
+        @extend .flex-row;
+        .button-inner{
+            width:4.5rem;
+            height: 1rem;
+            border-radius:22px;
+            background-color: $light-green;
+            box-shadow: 2px 2px 8px 1px #73d174;
+        }
+
+        .button-inner:nth-child(2){
+            background-color: red;
+            box-shadow: 2px 2px 8px 1px #bc5757cc;
+        }
+    }
+}

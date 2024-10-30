@@ -1,0 +1,33 @@
+<div class="auth-box">
+    {{#if (eq inputType "password" )}}
+        {{!-- <label for={{forLabel}} class="auth-label font-ml">{{labelText}}</label> --}}
+        <label for={{forLabel}} class={{labelClass}}>{{labelText}}</label>
+        <div class="input-fields">
+            {{input 
+                id=inputId
+                type=(if passwordVisible 'text' 'password')
+                value=value
+                placeholder=placeholder
+                class="auth-input" 
+                required=required
+                disabled=disabled
+            }}
+            <img 
+                src="/client/{{ if passwordVisible 'eye-open.png' 'eye-hidden.png'}}"  
+                class="icon-xs eye-icon auth-icon"
+                {{action "toggleVisibility"}}
+            />
+        </div>
+    {{else}}
+        <label for={{inputId}} class={{labelClass}}>{{labelText}}</label>
+        {{#if (eq tag "input") }}
+                {{input id=inputId type=inputType value=value placeholder=placeholder class=inputClass required=required disabled=disabled}}
+        {{else if (eq tag  "text-area") }}
+                {{textarea id=inputId type=inputType value=value placeholder=placeholder class=inputClass required=required disabled=disabled}}
+        {{/if}}
+    {{/if}}
+    <div class="error-message">{{error}}</div>
+    
+</div>
+
+{{yield}}

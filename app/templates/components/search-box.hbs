@@ -1,0 +1,19 @@
+<div class="search-box">
+  <div class="search-container">
+    {{input 
+      type="text" 
+      name="search" 
+      class="search-input" 
+      placeholder=placeholder 
+      value=searchValue 
+    }}
+    <img 
+      src="/client/search-icon.png" 
+      alt="search-img" 
+      class="search-btn icon-xs" 
+      {{action actionName}}
+    />
+  </div>
+</div>
+
+{{yield}}

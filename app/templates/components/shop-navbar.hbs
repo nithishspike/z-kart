@@ -1,0 +1,75 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-content">
+      <div class="navbar-logo">
+          {{!-- <a href="/" class="navbar-signup">Z-Kart</a> --}}
+          {{#link-to "index" class="" }}
+            <img class="icon-ml" src="/client/z-kartLogo.png" alt="z-kart">
+          {{/link-to}}
+      </div>
+      <div class="dropdown">  
+        <button class="dropbtn text-md">Categories</button>
+        <div class="dropdown-content">
+          {{#each categories as |category|}}
+             <span {{action "selectCategory" category.categoryId}} >{{category.displayName}}</span>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="dropdown " id="brand">
+        <button class="dropbtn text-md">Brands</button>
+          <div class="dropdown-content">
+            {{#each brands as |brand|}}
+              <span {{ action "selectBrand" brand.brandId}} >{{brand.brandName}}</span>
+            {{/each}}
+          </div>
+      </div>
+
+    </div>
+    <div class="navbar-search flex-column" >
+       <div class="search-field">
+          {{search-box actionName=(action "handleKeydown") placeholder="Search.." searchValue=searchQuery class="search-input"}}
+        </div>
+        <div class="search-suggestions {{if showSuggestion 'show' 'hide'}}">
+          {{#each searchResults as |product index|}}
+            <div class="{{if (eq index this.selectedIndex) 'selectedProduct'}}">
+              {{#link-to "product" product.productId class="flex-row search-item"}}
+                <div class="search-img">
+                  {{#unless (eq product.productName "No Results Found")}}
+                    <img src={{product-url product.productName}} alt="img" />
+                  {{/unless}}
+                </div>
+                <div class="item-details">
+                  <div class="search-product">{{product.productName}}</div>
+                </div>
+              {{/link-to}}
+            </div>
+          {{/each}}
+</div>
+    </div>
+    
+    <div class="navbar-right">
+      
+      {{#if isLoggedIn }}
+        {{#unless isAdmin }}
+            <div class="navbar-cart">
+              <img class="icon-small" {{action "toggleCart" true on="click"}} src="/client/cart.png" alt="cart" />
+            </div>
+            {{cart-container cartItems=this.cartItems class=(if showCart 'open' 'hidden') }}
+        {{/unless}}
+        <div class="navbar-account ">
+            {{#link-to "account.profile" }}
+              <img class="icon-small" src="/client/account.png" alt="Account">
+            {{/link-to}}
+        </div>
+      {{else}}
+          <div class="navbar-account">
+              {{#link-to 'login' class="navbar-signup"}}
+                Sign Up
+              {{/link-to}}
+          </div>
+      {{/if}}
+    </div>
+  </div>
+</nav>
+{{yield}}

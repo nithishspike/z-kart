@@ -1,0 +1,22 @@
+<div class="toast {{if activateToast 'active' 'hidden'}} ">
+  
+    <div class="toast-content {{status}}">
+      {{#if (eq status "success")}}
+         <div class="check">&#10003;</div>
+      {{else if (eq status "error") }}
+         <div class="error">&#10006;</div>
+      {{else if (eq status "warning") }}
+          <div class="warning">⚠️</div>
+      {{else if (eq staus "info")}}
+          <div class="check"><i>i</i></div>
+      {{/if}}
+      <div class="message">
+        <div class="text text-1">{{type}}</div>
+        <div class="text text-2">{{message}}</div>
+      </div>
+    </div>
+    <div class="close" {{action "closeToast"}}>&times;</div>
+    {{!-- <div class="progress"></div> --}}
+</div>
+
+{{yield}}

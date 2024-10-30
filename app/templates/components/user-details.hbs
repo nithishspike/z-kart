@@ -1,0 +1,47 @@
+<div class="profile-items">
+    {{#if readOnly}}
+       <div class="font-md">Shipping Information</div>
+    {{else}}
+       {{!-- <div class="font-md">Personal Information</div> --}}
+       <img src="/client/profile.png" alt="profile" class="profile-icon">
+       <button id="edit-btn" class="button-inner" {{action "editProfile"}}><img class="icon-small" src="/client/editing.png" alt="edit">Edit</button>
+
+    {{/if}}
+    <p class="error-message">{{error}}</p>
+    <div class="input-group-row">
+        {{input-field inputId="first_name"  value=model.firstName placeholder="First Name"  error=firstNameError inputClass="auth-input" labelClass="auth-label auth-text" labelText="First name:" disabled=(or readOnly disableEditDetails)}}
+        {{input-field inputId="last_name"  value=model.lastName placeholder="Last Name"  error=lastNameError inputClass="auth-input" labelClass="auth-label auth-text" labelText="Last name:" disabled=(or readOnly disableEditDetails)}}
+    </div>
+    {{input-field inputId="email"  inputType="email" value=model.email placeholder="Email"  error=emailError inputType="email" inputClass="auth-input" labelClass="auth-label auth-text" labelText="Email:" disabled=(or readOnly disableEditDetails)}}
+
+    {{input-field inputId="mobile" inputType="number" value=model.mobile placeholder="Mobile"  error=mobileError inputClass="auth-input" labelClass="auth-label auth-text" labelText="Mobile:" disabled=(or readOnly disableEditDetails)}}
+
+    {{input-field inputId="address"  value=address placeholder="Address"  error=addressError tag="text-area" inputClass="auth-input" labelClass="auth-label auth-text" labelText="Address:" disabled=(or readOnly disableEditDetails)}}
+
+    {{#if readOnly}}
+        <span  class="auth-label auth-text">Payment Mode</span>
+        <div class="input-group-row"> 
+            {{#each paymentOptions as |payment|}}
+                <div class="flex-row">
+                  <input type="radio" id="payment-{{payment.id}}" name="payment" value="{{payment.value}}" 
+                      checked={{eq payment.value selectedPayment}} 
+                      onchange={{action "updatePayment" payment.value}} required=true />
+                  <label for="payment-{{payment.id}}" class="auth-label auth-text">{{payment.label}}</label>
+                </div>
+            {{/each}}
+        </div>
+
+    {{/if}}
+    {{#unless (or readOnly disableEditDetails)}}    
+        <div class="input-group-row profile-btn">
+            <button type="button" class="button-inner" {{action "cancel"}}>
+                <span class="content-center">Cancel</span>
+            </button>
+            <button type="submit" class="button-inner" {{action "updateDetails"}} disabled={{isVerified}}>
+                <span class="content-center" >Update</span>
+            </button>
+        </div>
+    {{/unless}}
+</div>
+{{yield}}
+{{!-- {{outlet}} --}}

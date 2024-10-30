@@ -1,0 +1,70 @@
+<div class="product-container">
+  <div class="container-title">
+    {{title}}
+  </div>
+  <div class="{{scroll}}">
+      {{#if isLoading}}
+        <div class="shimmer-loader">
+          {{#each (range 1 6) as |index|}} <!-- Adjust number for how many placeholders you want -->
+            <div class="item shimmer">
+              <div class="image-box shimmer-image"></div>
+              <div class="container-items">
+                <h2 class="item-text item-main shimmer-text"></h2>
+                <p class="item-text shimmer-text"></p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        {{#each products as |product|}}
+          {{#link-to "product" product.productId (query-params categoryId=product.categoryId) }}
+              <div class="item">
+                <div class="image-box">
+                      <img
+                          src={{product-url product.productName}}
+                          alt="{{product.productName}}"
+                          onerror={{action "error"}}
+                          onload={{action "load"}}
+                          class="product-img {{if this.isImageError 'shrimmer-image'}}"
+                          />
+                </div>
+                {{#if (eq dealOfTheMoment.productId product.productId)}}
+                  <div class="product-discount">
+                      <div class="discount">
+                        {{dealOfTheMoment.percentage}}% off 
+                      </div>
+                      <span>
+                        Deal of the Moment
+                      </span>
+                  </div>
+                {{/if}}
+                {{#if (eq product.stock 0)}}
+                  <div class="out-of-stock">
+                    <span class="not-icon">&#10069;</span><span>This item is currently out of stock</span>
+                  </div>
+                {{/if}}
+                <div class="container-items">
+                  <h2 class="item-text item-main">{{product.productName}}</h2>
+                  {{#if (eq dealOfTheMoment.productId product.productId) }}
+                    <div class="item-discount">
+                      <span class="item-text">₹{{calculate-discount-price product.productPrice dealOfTheMoment.percentage}}</span>
+                      <div class="item-price">₹{{product.productPrice}}</div>
+                    </div>
+                  {{else}}
+                    <span class="item-text">₹{{product.productPrice}}</span>
+                  {{/if}}
+                
+                  
+                </div>
+              </div>
+          {{/link-to}}
+        {{/each}}
+      {{/if}}
+  </div>
+  
+</div>
+
+
+{{yield}}
+
+

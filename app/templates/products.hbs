@@ -1,0 +1,70 @@
+{{shop-navbar}}
+<div class="filter-wrapper flex-row">
+    <div class="filter-container flex-column">
+        <!-- Category Filter -->
+
+        <div class="filter-box border-bt-line" data-intro="Click here to get started" data-step="5">
+            <div class="text-large filters">
+                <span class="font-xs">FILTERS</span>
+                {{!-- <img src="/client/filter.png" class="icon-xs" alt="icon"/> --}}
+            </div>
+        </div>
+
+        <div class="filter-box border-bt-line">
+            <div class="filters">
+                <span class="font-xs">CATEGORY</span>
+                <img class="icon-xs" src="/client/down-arrow.png" alt="down-icon" onclick={{action "toggleCategory"}}>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="checkbox-fields flex-column {{if showCategory 'visible' 'hidden'}}">
+                {{#each categories as |category|}}
+                    <label class="text-sm">
+                        <input type="radio" class="radio" 
+                            checked={{eq category.categoryId selectedCategory}} 
+                            {{action "updateFilter" "category" category.categoryId on="change"}} />
+                        {{category.displayName}}
+                    </label>
+                {{/each}}
+            </div>
+        </div>
+        <div class="filter-box border-bt-line">
+            <div class="filters">
+                <span class="font-xs">BRAND</span>
+                <img class="icon-xs" src="/client/down-arrow.png" alt="down-icon" onclick={{action "toggleBrand"}}>
+            </div>
+            <!-- Brand Filter -->
+            <div class="checkbox-fields flex-column {{if showBrand 'visible' 'hidden'}}">
+                {{#each brands as |brand|}}
+                    <label class="text-sm">
+                        <input type="radio" class="radio"
+                            checked={{eq brand.brandId selectedBrand}} 
+                            {{action "updateFilter" "brand" brand.brandId on="change"}} />
+                        {{brand.brandName}}
+                    </label>
+                {{/each}}
+            </div>
+        </div>
+
+            <!-- Price Range Filter -->
+        <div class="filter-box border-bt-line">
+                <div class="filters">
+                    <span class="font-xs">PRICE RANGE</span>
+                    <img class="icon-xs" src="/client/down-arrow.png" alt="down-icon" onclick={{action "togglePrice"}}>
+                </div>
+                <div class="checkbox-fields flex-column {{if showPrice 'visible' 'hidden'}}">
+                    {{#each priceRanges as |priceRange|}}
+                        <label class="text-sm">
+                            <input type="radio" class="radio" value={{priceRange.value}} 
+                                {{action "updateFilter" "price" priceRange.condition on="change"}} 
+                                checked={{eq priceRange.condition selectedPriceRange}} />
+                            {{priceRange.label}}
+                        </label>
+                    {{/each}}
+                </div>
+        </div>
+    </div>
+    {{product-container products=model scroll="vertical-scroll"}}
+</div>
+{{outlet}}
+

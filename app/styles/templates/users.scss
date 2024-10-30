@@ -1,0 +1,44 @@
+.users-container{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    .user-box{
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        place-items: stretch;
+        gap: 2rem;
+	    max-width: 70%;
+        margin-top:5rem;
+        border:2px solid $sm-grey;
+        padding: 3rem;
+        border-radius:1rem;
+        gap: 4rem;
+        &:hover{
+            background-color: $sm-grey;
+        }
+        .user-label{
+            color:$light-grey;
+        }
+
+        div{
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+    }
+}
+
+.input-grp{
+    @include flex-space(null,center);
+    gap:10px;
+    margin-top: 5rem;
+    .auth-input{
+        width: 25rem;
+        border-radius:10px;
+        border: 1.5px solid $light-grey;
+    }
+    .button-inner{
+        width:10rem;
+    }
+}

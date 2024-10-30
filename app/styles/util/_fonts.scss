@@ -1,0 +1,96 @@
+.font-xl{ 
+  font-family: $font-family-serif;
+  font-size: 40px;
+  font-weight: 400; 
+  color:black;
+}
+
+.font-l{
+  font-size: 30px;
+  color:black;
+}
+
+.font-ml{
+  font-size: 20px;
+  color: #575454;
+}
+
+.font-md{
+  font-size: 1.2rem;
+  font-family: Arial;
+  color:black;
+}
+
+.font-sm{
+  font-size: 1.1em;
+}
+
+.font-xs{
+  font-size:14px;
+}
+
+.font-xxs{
+  font-size: 13px;
+}
+.font-lt{
+  color:$light-grey;
+}
+.text-large{
+    font-size:30px;
+    font-weight: 500;
+    color:#212121;;
+}
+
+.text-medium{
+    font-size:30px;
+    color: #212121;
+}
+.td{
+    padding:10px;
+}
+.text-dark{
+    color:black;
+    font-weight: bold;
+}
+
+.clr-red{
+  color:$red;
+  font-weight:bold;
+}
+  
+.hr{
+  border-top: 1px solid #bbbfbf;
+  background-color: black;
+}
+
+.text-grey{
+    color:grey;
+}
+.text-link{
+
+}
+.product-price{
+
+}
+
+.a-dropdown {
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .a-dropdown-label {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+
+  .a-dropdown-select {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .line-height-low{
+    line-height: 30px;
+  }

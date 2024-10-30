@@ -1,0 +1,113 @@
+<div class="cart-container flex-column  {{class}}">
+  {{#if isOrderpage}}
+    <div class="cart-title font-ml ">
+      <span>Order Items</span>
+    </div>
+  {{else}}
+    <div class="cart-header border-bt-line">
+      <img class="icon-small" src="/client/cart.png" alt="cart"/>
+      <div>My Cart </div>
+      <div class="close-btn" {{action "toggleCart"}}>&times;</div>
+    </div>
+  {{/if}}
+  <div class="cart-items flex-column border-bt-line">
+    {{#each cartItems as |item| }}
+     <div class="cart-box border-bt-line">
+        <div class="cart-item">
+          <div class="cart-img"> 
+            <img src={{product-url item.product.productName}} alt="img"/>
+          </div>
+          <div class="item-details flex-column">
+            <span class="cart-text">{{item.product.productName}}</span>
+            {{#if (eq dealOfTheMoment.productId item.productId)}}
+                  <div class="product-discount">
+                      <div class="discount">
+                        {{dealOfTheMoment.percentage}}% off 
+                      </div>
+                      <span class="clr-red">
+                        Deal of the Moment
+                      </span>
+                  </div>
+                  <div class="item-discount">
+                      <strong class="item-text">₹{{calculate-discount-price item.product.productPrice dealOfTheMoment.percentage}}</strong>
+                      <div class="item-price">₹{{item.product.productPrice}}</div>
+                  </div>
+            {{else}}
+                <strong>₹{{item.product.productPrice}}</strong>
+            {{/if}}
+            
+            <div class="qty">
+              <span class="cart-text" {{action "decreaseQuantity" item}}>-</span>
+              <strong>{{item.quantity}}</strong>
+              <span class="cart-text" {{action "increaseQuantity" item}}>+</span>
+            </div>
+          </div>  
+        </div>
+        {{#if (eq item.product.stock 0)}}
+          <div class="out-of-stock">
+            <span class="not-icon">&#10069;</span><span>This item is currently out of stock</span>
+          </div> 
+        {{/if}}
+     </div> 
+    {{/each}}
+  </div>
+  {{#if isOrderpage}}
+    {{#if Discounts}}
+      <div class="cart-discount">
+        <div class="cart-title ">
+          <span class="text-ml">User Discounts</span>
+        </div>
+        <div class="discount-list ">  
+          <div class="discount-title border-bt-line">
+            <span>Discount Code</span>
+            <span>Percentage</span>
+            <span>Issued On</span>
+          </div>
+          {{!-- to get the user discount contains user_discount_id,percentage,discound_code --}}
+          {{#each Discounts as |discount| }}
+            <div class="discount-title border-bt-line">
+              <input type="radio" class="radio" 
+                    checked={{eq discount selectedDiscount}}  
+                    {{action "updateDiscount" discount on="change"}} />
+              <span>{{discount.discound_code}}</span>
+              <span>{{discount.percentage}}%</span>
+              <strong>{{time-converter discount.created_time}}</strong>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{else}}
+      <div class="cart-title">
+         <span class="font-md">No Discounts Available</span>
+      </div>
+    {{/if}}
+  {{/if}}
+
+  <div class="cart-actions flex-column">
+      <div class="flex-row border-bt-line cart-amount">
+          <div class="cart-amount">Gross Amount:</div>
+          <div>₹{{totalAmount}}</div>
+      </div>
+      {{#if isOrderpage}}
+        <div class="flex-row border-bt-line cart-amount">
+            <div class="cart-amount">Discount:</div>
+            <div>{{selectedDiscount.percentage}}</div>
+        </div>
+        <div class="flex-row border-bt-line cart-amount">
+            <div class="cart-amount">Total Amount:</div>
+            <div>₹{{total}}</div>
+        </div>
+      {{/if}}
+    <div class="cart-bt">
+        {{#if isOrderpage}}
+            <button onclick={{action "purchase" address paymentMode selectedDiscount.user_discount_id}}>Place Order</button>
+        {{else}}
+            {{!-- <button {{action "updateCart"}}>Update</button> --}}
+            {{#link-to "checkout"}}
+            <button>Place Order</button>
+            {{/link-to}}
+        {{/if}}
+    </div>
+
+  </div>
+</div>

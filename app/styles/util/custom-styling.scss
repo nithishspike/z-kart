@@ -1,0 +1,99 @@
+// @import "./variables";
+// @import "./util/variables";
+@import "./variables";
+.button-inner {
+    background-color: #007bff;
+    align-items: center;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    bottom:10px;
+    width:86%;
+    height:40px;
+    text-align: center;
+    &:hover {
+      background-color: #0056b3; // Darker blue on hover
+    }
+    @include scale-effect();
+  }
+
+
+  .padding-topdown{
+    padding:15px 0px ;
+}
+
+a{
+    text-decoration: none;
+}
+.input-group-row{
+  @include flexdirection(row);
+  gap:4rem;
+  justify-content: space-between;
+}
+
+.content-center{
+  text-align: center;
+}
+
+.flex-column{
+  display:flex;
+  flex-direction:column;
+}
+
+.flex-row{
+  display:flex;
+  flex-direction:row;
+}
+
+.border-bt-line{
+  border-bottom:1px solid $light-grey;
+}
+
+.icon-small{
+  width:25px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.icon-md{
+  width: 125px;
+  cursor: pointer;
+}
+.icon-ml{
+  width: 80px;
+}
+.icon-xs{
+  width:20px;
+  cursor: pointer;
+}
+
+.icon-big{
+  width:200px;
+}
+
+.icon-circle{
+  height:35px;
+  width:35px;
+  font-size:20px;
+  border-radius:50px;
+  @include flex-space(center,center);
+}
+
+.out-of-stock{
+  margin:0 5px;
+  @include flex-space(center,center,row);
+  .not-icon{
+      background-color: #dd2626;;
+      @extend .icon-circle;
+      margin-right:10px;
+  }
+}
+
+.hide{
+  visibility: hidden;
+}
+

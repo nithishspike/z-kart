@@ -1,0 +1,39 @@
+{{#if isAdmin}}
+    {{!-- {{top-menu}} --}}
+    {{!-- {{search-box placeholder="Search by User or Email" searchValue=searchValue actionName=(action "fetchUser") }} --}}
+    <div class="flex-row input-grp">
+        {{input type="text" name="email" class="auth-input" placeholder="     Enter User or Email" value=searchValue }}
+        <button {{action "fetchUser"}} class="button-inner">Enter</button>
+    </div>
+{{/if}}
+{{#if userDetail}}
+    <div class="users-container">
+    <div class="user-box">
+        <div>
+            <span class="user-label">First Name</span>
+            <span>{{userDetail.firstName}}</span>
+        </div>
+        <div>
+            <span class="user-label">Last Name</span>
+            <span>{{userDetail.lastName}}</span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span class="user-label">Address</span>
+            <span>{{userDetail.address}}</span>
+        </div>
+        <div>
+            <span class="user-label">mobile</span>
+            <span>{{userDetail.mobile}}</span>
+        </div>
+        <div>
+            <span class="user-label">Email</span>
+            <span>{{userDetail.email}}</span>
+        </div>
+    </div>
+</div>
+{{/if}}
+{{outlet}}
